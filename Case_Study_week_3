@@ -1,0 +1,332 @@
+==========================ProductStore.java==============================
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.Map.Entry;
+public class ProductStore {
+    static int id = 100;
+    static HashMap<Integer, Product> allProducts = new HashMap<>();
+    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        while(true){
+            System.out.println("Choose the option: ");
+        System.out.println("1. AddProduct");
+        System.out.println("2. UpdateProduct");
+        System.out.println("3. deleteProduct");
+        System.out.println("4. getProduct");
+        System.out.println("5. getAllProduct");
+        System.out.println("==============Enter=============");
+        int n = sc.nextInt();
+        switch (n) {
+            case 1:
+            Product pr  =new Product();
+                System.out.println("Add Product details!!!!");
+                pr.setId(id++);
+                System.out.println("Enter the product Name: ");
+                pr.setName(sc.next());
+                System.out.println("Enter the amount");
+                pr.setAmount(sc.nextInt());
+                System.out.println("Enter the code");
+                pr.setCode(sc.nextInt());
+                System.out.println("Enter the Address");
+                pr.setAddress(sc.next());
+                System.out.println("Enter the pincode");
+                pr.setPincode(sc.nextInt());
+                allProducts.put(pr.getId(), pr);
+                break;
+            case 2:
+                System.out.println("Update Product!!!!!!!");
+                updateProduct();  
+                break;
+            case 3:
+                System.out.println("delete Product!!!!!!!!");
+                System.out.println("ENter the product ID to delte: ");
+                int productId = sc.nextInt();
+                removeProduct(productId);
+                break;
+            case 4:
+                System.out.println("get Product!!!!!");
+                System.out.println("Enter the product id: ");
+                int productID = sc.nextInt();
+                getProductById(productID);
+                break;
+            case 5:
+                System.out.println("get All Product!!!!!!!");
+                getAllProducts();
+            default:
+                System.out.println("Enter valid option");
+                break;
+        }
+             }        
+        }  
+    public static void getAllProducts(){
+        for(int i=100; i<100+allProducts.size(); i++){
+            Product myProduct =  allProducts.get(i);
+        System.out.println("Id : "+myProduct.getId());
+        System.out.println("Name : "+myProduct.getName());
+        System.out.println("Amount : "+myProduct.getAmount());
+        System.out.println("Code : "+myProduct.getCode());
+        System.out.println("Address : "+myProduct.getAddress());
+        System.out.println("Pincode : "+myProduct.getPincode());
+        }
+    }
+    public static void getProductById(int productID){
+        Product myProduct = allProducts.get(productID);
+                System.out.println("Id : "+myProduct.getId());
+                System.out.println("Name : "+myProduct.getName());
+                System.out.println("Amount : "+myProduct.getAmount());
+                System.out.println("Code : "+myProduct.getCode());
+                System.out.println("Address : "+myProduct.getAddress());
+                System.out.println("Pincode : "+myProduct.getPincode());
+    }
+    public static void removeProduct(int productId){
+        allProducts.remove(productId);
+        System.out.println("Product with "+productId+ " ID deleted");
+    }
+    public static void updateProduct(){
+        System.out.println("Enthe the product ID to update: ");
+        int productId = sc.nextInt();
+        Product pr = new Product();
+        pr.setId(allProducts.get(productId).getId());
+        System.out.println("Enter the product Name: ");
+                pr.setName(sc.next());
+                System.out.println("Enter the amount");
+                pr.setAmount(sc.nextInt());
+                System.out.println("Enter the code");
+                pr.setCode(sc.nextInt());
+                System.out.println("Enter the Address");
+                pr.setAddress(sc.next());
+                System.out.println("Enter the pincode");
+                pr.setPincode(sc.nextInt());
+        allProducts.replace(productId, allProducts.get(productId), pr);
+        System.out.println("Update product details with "+productId+" Id");
+    }
+}
+
+
+==================================Product.java====================================
+public class Product {
+   private int id;
+   private String name;
+   private int amount;
+   private int code;
+   private String address;
+   private int pincode;
+   void Product(int id, String name, int amount, int code, String address, int pincode){
+       this.id = id;
+       this.name = name;
+       this.amount = amount;
+       this.code = code;
+       this.address = address;
+       this.pincode = pincode;
+   }
+   public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public int getAmount() {
+	return amount;
+}
+public void setAmount(int amount) {
+	this.amount = amount;
+}
+public int getCode() {
+	return code;
+}
+public void setCode(int code) {
+	this.code = code;
+}
+public String getAddress() {
+	return address;
+}
+public void setAddress(String address) {
+	this.address = address;
+}
+public int getPincode() {
+	return pincode;
+}
+public void setPincode(int pincode) {
+	this.pincode = pincode;
+}
+}
+
+
+
+=================================================Output=====================================================================
+
+Choose the option: 
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
+1
+Add Product details!!!!
+Enter the product Name:
+CFL
+Enter the amount
+120
+Enter the code
+453
+Enter the Address
+lopuy
+Enter the pincode
+09667
+Choose the option: 
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
+5
+get All Product!!!!!!!
+Id : 100
+Name : CFL
+Amount : 120
+Code : 453
+Address : lopuy
+Pincode : 9667
+Enter valid option
+Choose the option:
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
+1
+Add Product details!!!!
+Enter the product Name:
+UFL
+Enter the amount
+678
+Enter the code
+908
+Enter the Address
+juntg
+Enter the pincode
+76785
+Choose the option: 
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
+5
+get All Product!!!!!!!
+Id : 100
+Name : CFL
+Amount : 120
+Code : 453
+Address : lopuy
+Pincode : 9667
+Id : 101
+Name : UFL
+Amount : 678
+Code : 908
+Address : juntg
+Pincode : 76785
+Enter valid option
+Choose the option:
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
+4
+get Product!!!!!
+Enter the product id:
+101
+Id : 101
+Name : UFL
+Amount : 678
+Code : 908
+Address : juntg
+Pincode : 76785
+Choose the option:
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
+3
+delete Product!!!!!!!!
+ENter the product ID to delte:
+101
+Product with 101 ID deleted
+Choose the option:
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
+5
+get All Product!!!!!!!
+Id : 100
+Name : CFL
+Amount : 120
+Code : 453
+Address : lopuy
+Pincode : 9667
+Enter valid option
+Choose the option:
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
+2
+Update Product!!!!!!!
+Enthe the product ID to update:
+100
+Enter the product Name: 
+BFL
+Enter the amount
+324
+Enter the code
+908
+Enter the Address
+desw
+Enter the pincode
+21344
+Update product details with 100 Id
+Choose the option:
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
+5
+get All Product!!!!!!!
+Id : 100
+Name : BFL
+Amount : 324
+Code : 908
+Address : desw
+Pincode : 21344
+Enter valid option
+Choose the option:
+1. AddProduct
+2. UpdateProduct
+3. deleteProduct
+4. getProduct
+5. getAllProduct
+==============Enter=============
